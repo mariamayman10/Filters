@@ -366,3 +366,19 @@ void Detect_Edges(){
         }
     }
 }
+void Shrink_image(){
+    unsigned char shrink[SIZE][SIZE];
+    int Dividing ;
+    cout <<"Enter the number you want to divide By 1/....";
+    cin >> Dividing;
+    for (int i = 0; i < SIZE; i++ ){
+        for (int j = 0; j < SIZE; j++){
+            shrink[i/Dividing][j/Dividing]=image1[i][j];
+        }
+    }
+    for(int i = 0; i < SIZE;++i){
+        for(int j = 0; j < SIZE; ++j){
+            image1[i][j] = shrink[i][j];
+        }
+    }
+}
