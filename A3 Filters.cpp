@@ -331,3 +331,38 @@ void Enlarge_image() {
         }
     }
 }
+void Detect_Edges(){
+    unsigned char DE[SIZE][SIZE];
+    for (int i = 0; i < SIZE; ++i ){
+        for (int j = 0; j < SIZE; ++j){
+            if (image1[i][j] > 127){
+                image1[i][j] = 0;
+            }
+            else{
+                image1[i][j] = 255;
+            }
+        }
+    }
+    for (int i = 0;i < SIZE;++i){
+        for(int j = 0;j < SIZE-1; ++j){
+            if(image1[i][j] != image1[i][j+1] || image1[i][j] != image1[i+1][j] || image1[i][j] != image1[i][j-1] || image1[i][j] != image1[i-1][j]){
+                DE[i][j] = 255;
+            }
+        }
+    }
+    for (int i = 0; i < SIZE; ++i ){
+        for (int j = 0; j < SIZE; ++j){
+            if (DE[i][j] > 127){
+                DE[i][j] = 0;
+            }
+            else{
+                DE[i][j] = 255;
+            }
+        }
+    }
+    for(int i = 0;i < SIZE; ++i){
+        for(int j = 0;j < SIZE; ++j){
+            image1[i][j] = DE[i][j];
+        }
+    }
+}
