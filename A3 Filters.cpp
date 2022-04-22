@@ -121,3 +121,17 @@ void Flip_image(){
         }
     }
 }
+void Merge_images(){
+    load_image2();
+    unsigned char Merged[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++ ){
+        for (int j = 0; j < SIZE; j++){
+            Merged[i][j] = (image1[i][j]+image2[i][j])/2;
+        }
+    }
+    for(int i = 0;i < SIZE; ++i){
+        for(int j = 0;j < SIZE; ++j){
+            image1[i][j] = Merged[i][j];
+        }
+    }
+}
