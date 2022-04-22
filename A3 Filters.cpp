@@ -382,3 +382,67 @@ void Shrink_image(){
         }
     }
 }
+void Rotate_image(){
+    unsigned char mat[SIZE][SIZE];
+    unsigned char Rotate_90[SIZE][SIZE];
+    unsigned char Rotate_180[SIZE][SIZE];
+    unsigned char Rotate_270[SIZE][SIZE];
+    char option;
+    cout << "Please choose one of three options:\n1-Rotate by 90 degree\n2-Rotate by 180 degree\n3-Rotate by 270 degree\n";
+    cin >> option;
+    while(option != '1' && option != '2' && option != '3'){
+        cout << "Please choose one of three options:\n1-Rotate by 90 degree\n2-Rotate by 180 degree\n3-Rotate by 270 degree\n";
+        cin >> option;
+    }
+    if(option == '1') {
+        for (int i = 0; i < SIZE; ++i ){
+            for (int j = 0; j < SIZE; ++j){
+                mat[i][j] = image1[SIZE-i-1][j];
+            }
+        }
+        for (int i = 0; i < SIZE; ++i) {
+            for (int j = 0; j < SIZE; ++j) {
+                Rotate_90[j][i] = mat[i][j];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = Rotate_90[i][j];
+            }
+        }
+    }
+    else if(option == '2'){
+        for (int i = 0; i < SIZE; ++i ){
+            for (int j = 0; j < SIZE; ++j){
+                mat[i][j] = image1[i][SIZE-j-1];
+            }
+        }
+        for (int i = 0; i < SIZE; ++i ){
+            for (int j = 0; j < SIZE; ++j){
+                Rotate_180[i][j] = mat[SIZE-i-1][j];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = Rotate_180[i][j];
+            }
+        }
+    }
+    else if(option == '3'){
+        for (int i = 0; i < SIZE; ++i) {
+            for (int j = 0; j < SIZE; ++j) {
+                mat[i][j] = image1[i][SIZE-j-1];
+            }
+        }
+        for (int i = 0; i < SIZE; ++i) {
+            for (int j = 0; j < SIZE; ++j) {
+                Rotate_270[j][i] = mat[i][j];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = Rotate_270[i][j];
+            }
+        }
+    }
+}
