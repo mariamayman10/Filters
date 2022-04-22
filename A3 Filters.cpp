@@ -74,3 +74,50 @@ void save_image(){
     writeGSBMP(ImageName, image1);
 
 }
+void Black_and_White() {
+    for (int i = 0; i < SIZE; ++i ){
+        for (int j = 0; j < SIZE; ++j){
+            if (image1[i][j] > 127){
+                image1[i][j] = 0;
+            }
+            else{
+                image1[i][j] = 255;
+            }
+        }
+    }
+}
+void Flip_image(){
+    unsigned char Flip_h[SIZE][SIZE];
+    unsigned char Flip_v[SIZE][SIZE];
+    char option;
+    cout << "Please choose one of the two options: \n1-Flip Horizontally\n2-Flip Vertically\n";
+    cin >> option;
+    while(option != '1' && option != '2'){
+        cout << "Please choose one of the two options: \n1-Flip Horizontally\n2-Flip Vertically\n";
+        cin >> option;
+    }
+    if(option == '1'){
+        for (int i = 0; i < SIZE; ++i ){
+            for (int j = 0; j < SIZE; ++j){
+                Flip_h[i][j] = image1[i][SIZE-j-1];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = Flip_h[i][j];
+            }
+        }
+    }
+    else if(option == '2'){
+        for (int i = 0; i < SIZE; ++i ) {
+            for (int j = 0; j < SIZE; ++j) {
+                Flip_v[i][j] = image1[SIZE - i - 1][j];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = Flip_v[i][j];
+            }
+        }
+    }
+}
