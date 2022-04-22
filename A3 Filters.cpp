@@ -247,3 +247,87 @@ void Darken(){
         }
     }
 }
+void Enlarge_image() {
+    unsigned char image3[SIZE][SIZE];
+    unsigned char part_image[SIZE][SIZE];
+    int part, row, colum = 0;
+    row = 0;
+    cout << "Enter the part number you want to enlarge: ";
+    cin >> part;
+    //We take the bar from the user and then distribute it to the entire array and thus happens enlarge
+    while (true) {
+        if (part == 1 || part == 2 || part == 3 || part == 4) {
+            break;
+        }
+        else {
+            cout << "invalid input" << endl;
+            cout << "Enter the part number you want to modify";
+            cin >> part;
+        }
+    }
+    if (part == 1) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = 0;
+            for (int j = 0; j < SIZE / 2; j++) {
+                part_image[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (part == 2) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                part_image[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (part == 3) {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = 0; j < SIZE / 2; j++) {
+                part_image[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                part_image[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    row = 0;
+    for (int i = 0;i < SIZE / 2;i++) {
+        colum = 0;
+        for (int j = 0;j < SIZE;j += 2) {
+            image2[i][j] = part_image[row][colum];
+            image2[i][j + 1] = part_image[row][colum];
+            colum++;
+        }
+        row++;
+    }
+    row = 0;
+    for (int i = 0;i < SIZE;i += 2) {
+        colum = 0;
+        for (int j = 0;j < SIZE;j++) {
+            image3[i][j] = image2[row][colum];
+            image3[i + 1][j] = image2[row][colum];
+            colum++;
+        }
+        row++;
+    }
+    for(int i = 0; i < SIZE;++i){
+        for(int j = 0; j < SIZE; ++j){
+            image1[i][j] = image3[i][j];
+        }
+    }
+}
