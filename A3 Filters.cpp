@@ -135,3 +135,86 @@ void Merge_images(){
         }
     }
 }
+void Mirror(){
+    unsigned char L_mirror[SIZE][SIZE];
+    unsigned char R_mirror[SIZE][SIZE];
+    unsigned char U_mirror[SIZE][SIZE];
+    unsigned char B_mirror[SIZE][SIZE];
+    string choice;
+    cout << "Choose a half to Mirror it: " << '\n' << "1-Left half\n2-Right half\n3-Upper half\n4-Bottom half\n";
+    cin >> choice;
+    while (choice != "1" && choice != "2" && choice != "3" && choice != "4"){
+        cout << "Choose a half to Mirror it: " << '\n' << "1-Left half\n2-Right half\n3-Upper half\n4-Bottom half\n";
+        cin >> choice;
+    }
+    if(choice == "1"){
+        for(int i = 0;i < SIZE;++i){
+            for(int j = 0;j < SIZE/2;++j){
+                L_mirror[i][j] = image1[i][j];
+            }
+            int x = 1;
+            for(int k = SIZE/2;k < SIZE ;++k){
+                L_mirror[i][k] = image1[i][k-x];
+                x += 2;
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = L_mirror[i][j];
+            }
+        }
+    }
+    else if(choice == "2"){
+        for(int i = 0;i<SIZE;++i){
+            int size = 256;
+            for(int j = 0;j < SIZE/2;++j){
+                R_mirror[i][j] = image1[i][size-1];
+                size--;
+            }
+            for(int k = SIZE/2; k < SIZE;++k){
+                R_mirror[i][k] = image1[i][k];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = R_mirror[i][j];
+            }
+        }
+    }
+    else if(choice == "3"){
+        for(int i = 0; i < SIZE/2;++i){
+            for(int j = 0;j < SIZE;++j){
+                U_mirror[i][j] = image1[i][j];
+            }
+        }
+        int x = 1;
+        for(int i = SIZE/2; i < SIZE;++i){
+            for(int j = 0;j < SIZE;++j){
+                U_mirror[i][j] = image1[i-x][j];
+            }
+            x +=2;
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = U_mirror[i][j];
+            }
+        }
+    }
+    else if(choice == "4"){
+        for(int i = 0;i < SIZE/2;++i){
+            for(int j = 0;j < SIZE; ++j){
+                B_mirror[i][j] = image1[SIZE-1-i][j];
+            }
+        }
+        for(int i = SIZE/2;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                B_mirror[i][j] = image1[i][j];
+            }
+        }
+        for(int i = 0;i < SIZE; ++i){
+            for(int j = 0;j < SIZE; ++j){
+                image1[i][j] = B_mirror[i][j];
+            }
+        }
+    }
+}
