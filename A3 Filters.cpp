@@ -50,3 +50,27 @@ int main() {
         cout << '\n';
     }
 }
+void load_image1(){
+    char file_name[100];
+    cout << "Enter The Source Image: ";
+    cin >> file_name;
+    cout << '\n';
+    strcat(file_name, ".bmp");
+    readGSBMP(file_name,image1);
+}
+void load_image2(){
+    char file_name[100];
+    cout << "Enter The Source Image 2:  ";
+    cin >> file_name;
+    cout << '\n';
+    strcat(file_name, ".bmp");
+    readGSBMP(file_name,image2);
+}
+void save_image(){
+    char ImageName[100];
+    cout << "Enter the target image name: ";
+    cin >> ImageName;
+    strcat(ImageName, ".bmp");
+    writeGSBMP(ImageName, image1);
+
+}
