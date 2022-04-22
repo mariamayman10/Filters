@@ -218,3 +218,32 @@ void Mirror(){
         }
     }
 }
+void Lighten(){
+    unsigned char n_img[SIZE][SIZE];
+    unsigned char lighten[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++ ) {
+        for (int j = 0; j < SIZE; j++) {
+            n_img[i][j] = 200;
+            n_img[i][j] = (n_img[i][j] + image1[i][j]) / 2;
+            lighten[i][j] = n_img[i][j];
+        }
+    }
+    for(int i = 0;i < SIZE; ++i){
+        for(int j = 0;j < SIZE; ++j){
+            image1[i][j] = lighten[i][j];
+        }
+    }
+}
+void Darken(){
+    unsigned char darken[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++ ){
+        for (int j = 0; j < SIZE; j++){
+            darken[i][j]=image1[i][j]/2;
+        }
+    }
+    for(int i = 0;i < SIZE; ++i){
+        for(int j = 0;j < SIZE; ++j){
+            image1[i][j] = darken[i][j];
+        }
+    }
+}
