@@ -446,3 +446,192 @@ void Rotate_image(){
         }
     }
 }
+void Invert() {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j< SIZE; j++) {
+            image1[i][j] = 255- image1[i][j];
+
+        }
+    }
+}
+void Shuffle_image() {
+    unsigned char shuffle[SIZE][SIZE];
+    int row = 0, colum = 0;
+    string order, c_order;
+    cout << "Please enter the order you want: ";
+    cin >> order;
+    c_order = order;
+    sort(order.begin(), order.end());
+    while (order[0] == order[1] || order[1] == order[2] || order[2] == order[3]){
+        cout << "Invalid input";
+        cout << "Please enter the order you want: ";
+        cin >> order;
+        c_order = order;
+        sort(order.begin(), order.end());
+    }
+    if (order[0] == 1) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[i][j] = image1[i][j];
+            }
+        }
+    }
+    else if (order[0] == 2) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[0] == 3) {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    colum = SIZE / 2;
+    row = 0;
+    if (order[1] == 1) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = SIZE / 2;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[1] == 2) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = SIZE / 2;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[1] == 3) {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = SIZE / 2;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = SIZE / 2;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    row = SIZE / 2;
+    colum = 0;
+    if (order[2] == 1) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = 0;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[2] == 2) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[2] == 3) {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }row++;
+        }
+    }
+    else {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = 0;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }row++;
+        }
+    }
+    row = SIZE / 2;
+    colum = SIZE / 2;
+    if (order[3] == 1) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = SIZE / 2;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else if (order[3] == 2) {
+        for (int i = 0; i < SIZE / 2; i++) {
+            colum = SIZE / 2;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }row++;
+        }
+    }
+    else if (order[3] == 3) {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = SIZE / 2;
+            for (int j = 0; j < SIZE / 2; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    else {
+        for (int i = SIZE / 2; i < SIZE; i++) {
+            colum = SIZE / 2;
+            for (int j = SIZE / 2; j < SIZE; j++) {
+                shuffle[row][colum] = image1[i][j];
+                colum++;
+            }
+            row++;
+        }
+    }
+    for(int i = 0; i < SIZE;++i){
+        for(int j = 0; j < SIZE; ++j){
+            image1[i][j] = shuffle[i][j];
+        }
+    }
+}
