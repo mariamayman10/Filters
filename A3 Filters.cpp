@@ -694,3 +694,20 @@ void Shuffle_image() {
         }
     }
 }
+void Blur_image(){
+    unsigned char blur[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++ ){
+        for (int j = 0; j < SIZE; j++){
+            int avr=image1[i-1][j-1] +image1[i-1][j] +image1[i-1][j+1] +image1[i-1][j+2] +image1[i-1][j+3] +image1[i][j-1]
+                    +image1[i][j] +image1[i][j+1] +image1[i][j+2] +image1[i][j+3] +image1[i+1][j-1] +image1[i+1][j] +image1[i+1][j+1] +image1[i+1][j+2] + image1[i+1][j+3] +image1[i+2][j-1] +
+                    image1[i+2][j] +image1[i+2][j+1] +image1[i+2][j+2] +image1[i+2][j+3] +image1[i+3][j-1] +image1[i+3][j] +image1[i+3][j+1] +image1[i+3][j+2] +image1[i+3][j+3] ;
+            int x=avr/25;
+            blur[i][j]=x;
+        }
+    }
+    for(int i = 0; i < SIZE;++i){
+        for(int j = 0; j < SIZE; ++j){
+            image1[i][j] = blur[i][j];
+        }
+    }
+}
