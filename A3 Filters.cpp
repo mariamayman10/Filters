@@ -49,6 +49,65 @@ int main() {
         cin >> Choice;
         cout << '\n';
     }
+    load_image1();
+    while(Choice != "13"){
+        if(Choice == "1"){
+            Black_and_White();
+        }
+        else if(Choice == "2"){
+            Invert();
+        }
+        else if(Choice == "3"){
+            Merge_images();
+        }
+        else if(Choice == "4"){
+            Flip_image();
+        }
+        else if(Choice == "5"){
+            Rotate_image();
+        }
+        else if(Choice == "6"){
+            char Ch;
+            cout<<"1-To lighten the image\n2-To darken the image";
+            cin >> Ch;
+            if(Ch == '1')
+                Lighten();
+            else
+                Darken();
+        }
+        else if (Choice == "7"){
+            Detect_Edges();
+        }
+        else if (Choice == "8"){
+            Enlarge_image();
+        }
+        else if(Choice == "9"){
+            Shrink_image();
+        }
+        else if(Choice == "10"){
+            Mirror();
+        }
+        else if(Choice == "11"){
+            Shuffle_image();
+        }
+        else if(Choice == "12"){
+            Blur_image();
+        }
+        cout << "_____Welcome to Photoshop Program_____\n";
+        cout << "Please choose one of the following: \n";
+        cout << "1-Black & White Filter\n2-Invert Filter\n3-Merge Filter\n4-Flip Filter\n5-Rotate Filter\n6-Darken or Lighten Filter\n"
+                "7-Detect image edges Filter\n8-Enlarge Filter\n9-Shrink Filter\n10-Mirror Filter\n11-Shuffle Filter\n12-Blur Filter\n13-Save and Exit\n\n";
+        cout << "Your Choice is: ";
+        cin >> Choice;
+        cout << '\n';
+        while(Choice != "1" && Choice != "2" && Choice != "3" && Choice != "4" && Choice != "5" && Choice != "6" && Choice != "7" && Choice != "8" && Choice != "9" && Choice != "10" &&Choice != "11" &&Choice != "12" &&Choice != "13") {
+            cout << "Your Choice is: ";
+            cin >> Choice;
+            cout << '\n';
+        }
+    }
+    save_image();
+    return 0;
 }
 void load_image1(){
     char file_name[100];
